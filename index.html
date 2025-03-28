@@ -3,43 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Beautiful Wife ❤️</title>
+    <title>Our Love Chat 💖</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Short+Stack&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Landing Page -->
     <div class="landing-page" id="landingPage">
-        <div class="hearts-container">
+        <div class="floating-hearts">
             <div class="heart">💖</div>
             <div class="heart">💝</div>
             <div class="heart">💟</div>
-            <div class="heart">💕</div>
-            <div class="heart">💞</div>
         </div>
         
+        <h1 class="title">Hi Papu, My chiki bubie cutie pie! 🌸</h1>
         <div class="baby-container">
             <div class="baby">👶</div>
             <div class="baby">🍼</div>
-            <div class="baby">👧</div>
-            <div class="baby">🐣</div>
+            <div class="baby">🐥</div>
         </div>
-
-        <h1 class="title">Hi Papu, Bubie Nazi 💌</h1>
-        <button class="sorry-button" onclick="showChat()">💔 I'm So Sorry 💔</button>
+        <button class="open-chat-btn" onclick="showChat()">💌 I m soo soo sorry papu Open My Heart's Message 💌</button>
     </div>
 
     <!-- WhatsApp Chat Section -->
-    <div class="chat-container" id="chatContainer">
+    <div class="chat-container hidden" id="chatContainer">
         <div class="chat-header">
-            <div class="whatsapp-logo">WhatsApp</div>
-            <div class="contact-info">
-                <span class="contact-name">Your Loving Husband 💑</span>
-            </div>
+            <div class="chat-title">💑 Our Eternal Chat</div>
+            <div class="contact-name">Your Loving Hubby 👨👩👧</div>
         </div>
         
         <div class="chat-messages">
             <div class="message received">
-                <div class="bubble">I'm really sorry my love 😢</div>
+                <div class="bubble">I'm really sorry my love 😢 papu</div>
                 <div class="time">10:30 AM</div>
             </div>
 
@@ -60,7 +55,7 @@
             <div class="message received">
                 <div class="bubble">I know I'm not perfect now, but please believe in me 🙏<br>
                 I've started changing - I'll be perfect for you 💪<br>
-                Please don't be sad, my queen 👑</div>
+                Please Bjr madkobedi papu, my queen 👑</div>
                 <div class="time">10:33 AM</div>
             </div>
 
@@ -71,36 +66,80 @@
                 <div class="time">10:34 AM</div>
             </div>
 
-            <div class="baby-animation">
-                👶🍼👧🧒🍭🦄🌈
+            <!-- Add other messages here -->
+
+            <div class="typing-indicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input">
+            <button class="attachment-btn">📎</button>
+            <input type="text" placeholder="Type your message..." id="messageInput">
+            <button class="send-btn" onclick="sendMessage()">💖</button>
         </div>
     </div>
 
     <script>
         function showChat() {
-            const landingPage = document.getElementById('landingPage');
-            const chatContainer = document.getElementById('chatContainer');
-            
-            // Hide landing page
-            landingPage.classList.add('hidden');
-            
-            // Show chat container with delay
-            setTimeout(() => {
-                chatContainer.classList.add('show');
-            }, 300);
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('chatContainer').classList.remove('hidden');
+            addHeartsAnimation();
+        }
 
-            // Confetti effect
+        function addHeartsAnimation() {
             for(let i = 0; i < 50; i++) {
                 const heart = document.createElement('div');
+                heart.className = 'floating-heart';
                 heart.innerHTML = '💖';
-                heart.className = 'confetti-heart';
                 heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (2 + Math.random() * 3) + 's';
                 document.body.appendChild(heart);
                 
                 setTimeout(() => heart.remove(), 3000);
             }
         }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if(message) {
+                const chatMessages = document.querySelector('.chat-messages');
+                const newMessage = document.createElement('div');
+                newMessage.className = 'message sent';
+                newMessage.innerHTML = `
+                    <div class="bubble">${message}</div>
+                    <div class="time">${getCurrentTime()}</div>
+                `;
+                chatMessages.appendChild(newMessage);
+                input.value = '';
+                
+                // Auto-reply simulation
+                setTimeout(() => {
+                    const replyMessage = document.createElement('div');
+                    replyMessage.className = 'message received';
+                    replyMessage.innerHTML = `
+                        <div class="bubble">I love you too my sweetheart! 😘</div>
+                        <div class="time">${getCurrentTime()}</div>
+                    `;
+                    chatMessages.appendChild(replyMessage);
+                }, 1000);
+            }
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Send message on Enter key
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') sendMessage();
+        });
     </script>
 </body>
 </html>
