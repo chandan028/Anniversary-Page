@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beautiful Wife ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+        <div class="hearts-container">
+            <div class="heart">💖</div>
+            <div class="heart">💝</div>
+            <div class="heart">💟</div>
+            <div class="heart">💕</div>
+            <div class="heart">💞</div>
+        </div>
+        
+        <div class="baby-container">
+            <div class="baby">👶</div>
+            <div class="baby">🍼</div>
+            <div class="baby">👧</div>
+            <div class="baby">🐣</div>
+        </div>
+
+        <h1 class="title">Hi Papu, Bubie Nazi 💌</h1>
+        <button class="sorry-button" onclick="showChat()">💔 I'm So Sorry 💔</button>
+    </div>
+
+    <!-- WhatsApp Chat Section -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="whatsapp-logo">WhatsApp</div>
+            <div class="contact-info">
+                <span class="contact-name">Your Loving Husband 💑</span>
+            </div>
+        </div>
+        
+        <div class="chat-messages">
+            <div class="message received">
+                <div class="bubble">I'm really sorry my love 😢</div>
+                <div class="time">10:30 AM</div>
+            </div>
+
+            <div class="message received">
+                <div class="bubble">I never meant to forget our amazing day 🌸<br>
+                This is the day that changed my life completely!<br>
+                You turned my black & white world into rainbow colors 🌈</div>
+                <div class="time">10:31 AM</div>
+            </div>
+
+            <div class="message received">
+                <div class="bubble">Thank you for coming into my life 🌟<br>
+                That one reply message changed everything 💬<br>
+                I can't imagine life without you now 🛤️</div>
+                <div class="time">10:32 AM</div>
+            </div>
+
+            <div class="message received">
+                <div class="bubble">I know I'm not perfect now, but please believe in me 🙏<br>
+                I've started changing - I'll be perfect for you 💪<br>
+                Please don't be sad, my queen 👑</div>
+                <div class="time">10:33 AM</div>
+            </div>
+
+            <div class="message received">
+                <div class="bubble">There's so much more to say... 📜<br>
+                But most importantly: THANK YOU 🎁<br>
+                For making my life truly great 🏰</div>
+                <div class="time">10:34 AM</div>
+            </div>
+
+            <div class="baby-animation">
+                👶🍼👧🧒🍭🦄🌈
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showChat() {
+            const landingPage = document.getElementById('landingPage');
+            const chatContainer = document.getElementById('chatContainer');
+            
+            // Hide landing page
+            landingPage.classList.add('hidden');
+            
+            // Show chat container with delay
+            setTimeout(() => {
+                chatContainer.classList.add('show');
+            }, 300);
+
+            // Confetti effect
+            for(let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.className = 'confetti-heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
